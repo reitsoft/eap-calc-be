@@ -7,6 +7,8 @@ import resolvers from "./graphql/resolvers/index.js";
 
 dotenv.config();
 
+const PORT = process.env.port || 5000
+
 const pubsub = new PubSub()
 
 const server = new ApolloServer({
@@ -25,7 +27,7 @@ mongoose
   .then(() => {
     console.log("Connected to MongoDB!");
     server
-      .listen({ port: 5000 })
+      .listen({ port: PORT })
       .then((res) => {
         console.log(`Server on ${res.url}`);
       })
